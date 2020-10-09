@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-import axios from 'axios'
-import Character from './components/Character.js'
+import axios from 'axios';
+import Character from './components/Character.js';
+import styled from 'styled-components';
 
+const FlexDiv = styled.div`
+    width: 100%;
+    max-width: 100%;
+    padding: 5%;
+    display: flex;
+    flex-wrap: wrap;
+`
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -12,13 +20,6 @@ const App = () => {
   const [characterData, setCharacterData] = useState([]);
   const [currentCharacter, setCurrentCharacter] = useState(null);
 
-  const openDetails = id => {
-    setCurrentCharacter(id)
-  }
-
-  const closeDetails = () => {
-    setCurrentCharacter(null)
-  }
 
   useEffect(() => {
     axios.get('https://swapi.dev/api/people/')
@@ -35,15 +36,14 @@ const App = () => {
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
 
+  let charsKey = 0
+
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
-      {
-      characterData.map(pr => {
-        return <Character />
-      })
-      }
-
+      <FlexDiv className='Body'>
+        {characterData.map(v => <Character data={v} key={charsKey++}></Character>)}
+      </FlexDiv>
     </div>
   );
 }

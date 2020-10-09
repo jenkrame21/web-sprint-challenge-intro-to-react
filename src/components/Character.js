@@ -1,49 +1,40 @@
 // Write your Character component here
 
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import gsap from 'gsap';
 
-const Character = () => {
+const CharBox = styled.div`
+    background-color: white;
+    padding: 1% 0;
+    margin: 2%;
+    border-radius: 10px;
+    width: 20%;
+    background: rgba(255,255,255,.7)
+`
 
-    function characterMaker(bio) {
+const Character = (props) => {
 
-        const charBox = document.createElement('div');
-        const charName = document.createElement('p');
-        const charGender = document.createElement('p');
-        const charHeight = document.createElement('p');
-        const charMass = document.createElement('p');
-        const charBirthYear = document.createElement('p');
-        const charEyeColor = document.createElement('p');
-        const charHairColor = document.createElement('p');
-        const charSkinColor = document.createElement('p');
+    let charBox;
 
-        charBox.classList.add('character-div');
-
-        charName.textContent = data.name;
-        charGender.textContent = data.gender;
-        charHeight.textContent = data.height;
-        charMass.textContent = data.mass;
-        charBirthYear.textContent = data.birth_year;
-        charEyeColor.textContent = data.eye_color;
-        charHairColor.textContent = data.hair_color;
-        charSkinColor.textContent = data.skin_color;
-
-        charBox.appendChild(charName);
-        charBox.appendChild(charGender);
-        charBox.appendChild(charHeight);
-        charBox.appendChild(charMass);
-        charBox.appendChild(charBirthYear);
-        charBox.appendChild(charEyeColor);
-        charBox.appendChild(charHairColor);
-        charBox.appendChild(charSkinColor);
-
-        return characterMaker
-
-    }
+    useEffect(() => {
+        gsap.from(charBox, {y: -50, delay: props.key*50})
+    }, [])
 
     return (
-        <>
-            
-        </>
+        <CharBox ref={div => charBox = div}>
+            <h2>{props.data.name}</h2>
+            <div>
+                <p>Gender: {props.data.gender}</p>
+                <p>Height: {props.data.height}</p>
+                <p>Mass: {props.data.mass}</p>
+                <p>Birth Year: {props.data.birth_year}</p>
+                <p>Eye Color: {props.data.eye_color}</p>
+                <p>Hair Color: {props.data.hair_color}</p>
+                <p>Skin Color: {props.data.skin_color}</p>
+            </div>
+        </CharBox>
     )
 }
+
+export default Character
