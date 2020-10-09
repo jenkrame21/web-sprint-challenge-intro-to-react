@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import './App.css';
+
 import axios from 'axios'
 import Character from './components/Character.js'
-import './App.css';
+
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
 
-  const [characters, setCharacters] = useState([]);
+  const [characterData, setCharacterData] = useState([]);
   const [currentCharacter, setCurrentCharacter] = useState(null);
 
   const openDetails = id => {
@@ -21,7 +23,8 @@ const App = () => {
   useEffect(() => {
     axios.get('https://swapi.dev/api/people/')
       .then(res => {
-        setCharacters(res.data.results)
+        setCharacterData(res.data.results)
+        // console.log(res.data.results)
       })
       .catch(err => {
         console.log(err)
@@ -35,6 +38,12 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
+      {
+      characterData.map(pr => {
+        return <Character />
+      })
+      }
+
     </div>
   );
 }
