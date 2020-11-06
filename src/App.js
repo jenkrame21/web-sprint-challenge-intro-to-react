@@ -8,10 +8,10 @@ import styled from 'styled-components';
 
 const CharDiv = styled.div`
     width: 100%;
-    max-width: 100%;
-    padding: 5%;
+    /* padding: 5%; */
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly
 `
 
 const App = () => {
