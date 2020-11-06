@@ -13,7 +13,11 @@ const CharBox = styled.div`
 `
 
 const CharName = styled.h2`
-    padding: 0 5%;
+    padding: 5%;
+    background-color: #443e3e;
+    margin: 5%;
+    border-radius: 7px;
+    color: #fff;
 `
 
 const CharDetails = styled.div`
