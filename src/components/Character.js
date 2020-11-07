@@ -10,6 +10,10 @@ const CharBox = styled.div`
     border-radius: 10px;
     width: 20%;
     background: rgba(255,255,255,.7);
+
+    h4 {
+        color: #443e3e;
+    }
 `
 
 const CharName = styled.h2`
@@ -21,7 +25,7 @@ const CharName = styled.h2`
 `
 
 const CharDetails = styled.div`
-    text-align: left;
+    text-align: center;
     padding: 0 10%;
 `
 
@@ -37,20 +41,33 @@ const Character = (props) => {
         <CharBox ref={div => charBox = div}>
             <CharName>{props.data.name}</CharName>
             <CharDetails>
-                <p>Gender: {
+                <h4>Gender: </h4>
+                <p>{
                     props.data.gender === 
-                    "n/a" ? "N/A"
-                    : props.data.gender.charAt(0).toUpperCase() + props.data.gender.slice(1)
+                    "n/a" ? "N/A" : props.data.gender.charAt(0).toUpperCase() + props.data.gender.slice(1)
                 }</p>
-                <p>Height: {props.data.height}</p>
-                <p>Mass: {props.data.mass}</p>
-                <p>Birth Year: {props.data.birth_year}</p>
-                <p>Eye Color: {props.data.eye_color.charAt(0).toUpperCase() + props.data.eye_color.slice(1)}</p>
-                <p>Hair Color: {props.data.hair_color.charAt(0).toUpperCase() + props.data.hair_color.slice(1)}</p>
-                <p>Skin Color: {props.data.skin_color.charAt(0).toUpperCase() + props.data.skin_color.slice(1)}</p>
+                <hr/>
+                <h4>Height: </h4>
+                <p>{props.data.height} cm</p>
+                <hr/>
+                <h4>Mass:</h4> 
+                <p>{props.data.mass} kg</p>
+                <hr/>
+                <h4>Birth Year: </h4>
+                <p>{props.data.birth_year}</p>
+                <hr/>
+                <h4>Eye Color: </h4>
+                <p>{props.data.eye_color.charAt(0).toUpperCase() + props.data.eye_color.slice(1)}</p>
+                <hr/>
+                <h4>Hair Color: </h4>
+                <p>{props.data.hair_color.charAt(0).toUpperCase() + props.data.hair_color.slice(1)}</p>
+                <hr/>
+                <h4>Skin Color: </h4>
+                <p>{props.data.skin_color.charAt(0).toUpperCase() + props.data.skin_color.slice(1)}</p>
+                <hr/>
             </CharDetails>
         </CharBox>
     )
 }
 
-export default Character
+export default Character;
